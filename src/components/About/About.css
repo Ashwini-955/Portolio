@@ -1,0 +1,153 @@
+/* About section layout */
+#about{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 2rem 0;
+}
+.aboutdetails h1{
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 0 0.6rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, rgb(198, 42, 96), white); /* use background */
+    -webkit-background-clip: text; /* for Chrome/Safari */
+    -webkit-text-fill-color: transparent; /* show gradient */
+    color: transparent; /* fallback */
+}
+
+.leftabout{
+    width: 50%;
+    display: flex;
+    align-items: flex-start; /* align timeline with top of details */
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-left: 3rem;
+}
+
+.circle-line{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+}
+
+.circle{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgb(171, 208, 241);
+    box-shadow: 2px 2px 10px rgba(116, 201, 225, 0.6);
+    animation: pulseSmall 3.6s ease-in-out infinite;
+}
+
+.line{
+    height: 140px;
+    width: 4px;
+    background-color: rgba(173, 216, 230, 0.6);
+    margin: 8px 0;
+}
+
+.aboutdetails{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-right: 2rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideUp 420ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+/* heading styles are defined earlier with gradient */
+
+
+.aboutdetails ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block; /* ensure items are stacked vertically */
+}
+
+.aboutdetails ul li{
+    width: 100%;
+    color: #fff;
+    font-size: 0.95rem; /* smaller font size for list items */
+    line-height: 1.4;
+    margin: 0.25rem 0;
+}
+
+.aboutdetails ul li span{
+    font-weight: 800;
+    margin-right: 0.4rem;
+    display: inline-block;
+    min-width: 6ch;
+    color: #dfeff7;
+}
+
+.skills ul li{
+    width: 100%;
+}
+
+.rightabout{
+    width: 50%;
+    min-height: 100vh;
+    /* placeholder styling if you later add an image or content */
+    display: flex;
+    align-items: flex-start; /* align cards to the top so they start level with leftabout */
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.cards-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    margin-top: 0.5rem; /* nudge to align with left content */
+}
+
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px){
+    #about{
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .leftabout, .rightabout{
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* ensure rightabout is shown after leftabout on mobile */
+    .leftabout{ order: 0; }
+    .rightabout{ order: 1; }
+
+    .aboutdetails ul li{
+        width: 100%;
+    }
+    .line{
+        height: 190px;
+    }
+    .skills ul li{
+        width: 100%;
+    }
+}
+
+@keyframes pulseSmall{
+    0%{ transform: scale(1); box-shadow: 2px 2px 10px rgba(116, 201, 225, 0.6) }
+    50%{ transform: scale(1.05); box-shadow: 0 0 24px rgba(116, 201, 225, 0.18) }
+    100%{ transform: scale(1); box-shadow: 2px 2px 10px rgba(116, 201, 225, 0.6) }
+}
+
+@keyframes slideUp{
+    to{ opacity: 1; transform: translateY(0) }
+}
